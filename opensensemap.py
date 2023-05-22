@@ -95,13 +95,13 @@ get_box_data(b, phenomena)
 
 # Merge temperature files into a single CSV file
 merged_data = pd.DataFrame()
-files = glob.glob('C:\\Users\\yagmur\\work\\OpenSenseMapRequests\\*.csv')
+files = glob.glob(os.path.join(os.getcwd(), '*.csv'))
 for file in files:
     csv_content = pd.read_csv(file)
     merged_data = pd.concat([merged_data, csv_content])
 
 # Save the merged temperature data to a CSV file
 merged_filename = 'merged_temperature_data.csv'
-merged_filepath = os.path.join('C:\\Users\\yagmur\\work\\OpenSenseMapRequests', merged_filename)
+merged_filepath = os.path.join(os.getcwd(), merged_filename)
 merged_data.to_csv(merged_filepath, index=False)
 print(f"Merged temperature data saved to: {merged_filepath}")
